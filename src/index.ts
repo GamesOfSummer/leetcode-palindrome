@@ -1,26 +1,27 @@
 import { validateFxn } from './helpers.js';
 import { Coco } from 'chroma-console';
 
-const data: number[] = [1, 2, 3, 4, 5];
+const data: number = 12321;
 
-function main(nums: number[], target: number): number[] {
-    const map = new Map<number, number>();
-
-    for (let i = 0; i < nums.length; i++) {
-        const currentNumber = nums[i];
-        const diff = target - currentNumber;
-        if (map.has(diff)) {
-            return [map.get(diff)!, i];
-        } else {
-            map.set(currentNumber, i);
-        }
+function main(number: number): boolean {
+    if (number < 0) {
+        return false;
     }
+
+    const reverseNumber = number
+        .toString()
+        .split('')
+        .reverse()
+        .join('')
+        .toString();
+
+    return number.toString() === reverseNumber;
 }
 
 Coco.setColor('firewood');
 Coco.start();
-const value = main(data, 9);
-Coco.log(value);
+const value = main(data);
+Coco.log('output - ' + value);
 Coco.end();
 
 export {};
